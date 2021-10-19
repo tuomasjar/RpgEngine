@@ -25,7 +25,12 @@ enum Slots
 
 namespace RPGEngine
 {
-    class Player
+    class Entity
+    {
+        public int HealthPoints { get; set; }
+
+    }
+    class Player : Entity
     {
         public String Name { get; set; }
         public Race race { get; set; }
@@ -36,9 +41,9 @@ namespace RPGEngine
 
         List<Item> equipment;
 
-        public int PickUp(Item item)
+        public int EquipItem(Item item)
         {
-            switch (item.slot)
+            switch (item.slot) //
             {
                 case Slots.Head:
                     {

@@ -29,6 +29,12 @@ namespace RPGEngine
         {
             this.slot = slot;
         }
+
+        public virtual void useItem()
+        {
+
+        }
+
     }
 
     class Weapon : Item
@@ -43,6 +49,10 @@ namespace RPGEngine
         }
         public damageDice dmgDice { get; init; }
 
+        public override void useItem(Enemy target)
+        {
+
+        }
         
     }
 
