@@ -3,25 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPGEngine;
 
-enum Race
-{
-    Human,
-    Elf,
-    Halfling,
-    Dwarf
-}
-enum Slots
-{
-    Head,
-    Torso,
-    Legs,
-    Boots,
-    Weapon,
-    Shield,
-    Potion,
-    Item
-}
 
 namespace RPGEngine
 {
@@ -35,137 +18,138 @@ namespace RPGEngine
         public String Name { get; set; }
         public Race race { get; set; }
 
-        public String description { get; set; }
+        public String Description { get; set; }
 
-        List<Item> inventory;
+        private List<Item> Inventory;
 
-        List<Item> equipment;
+        private List<Item> Equipment;
 
-        public int EquipItem(Item item)
+        public int PickUpItem(Item item) //Add item to inventory if inventory is less than 25 items. Returns 0 when successfull
+        {
+            if(Inventory.Count >= Constants.MAX_INVENTORY)
+            {
+                Inventory.Add(item);
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+
+        public int EquipItem(Item item) //Equips item. Unequips if something in slot already
         {
             switch (item.slot) //
             {
                 case Slots.Head:
                     {
-                        bool equipped = false;
-                        foreach (Item i in equipment)
+                        foreach (Item i in Equipment)
                         {
-                            if (i.slot == Slots.Head) equipped = true;
+                            if (i.slot == Slots.Head)
+                            {
+                                Inventory.Add(i);
+                                Equipment.Remove(i);
+                                Equipment.Add(item);
+                                return 0;
+                            }
                         }
-                        if (!equipped)
-                        {
-                            equipment.Add(item);
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        Equipment.Add(item);
+                        return 0;
                     }
                 case Slots.Torso:
                     {
-                        bool equipped = false;
-                        foreach (Item i in equipment)
+                        foreach (Item i in Equipment)
                         {
-                            if (i.slot == Slots.Torso) equipped = true;
+                            if (i.slot == Slots.Torso)
+                            {
+                                Inventory.Add(i);
+                                Equipment.Remove(i);
+                                Equipment.Add(item);
+                                return 0;
+                            }
                         }
-                        if (!equipped)
-                        {
-                            equipment.Add(item);
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        Equipment.Add(item);
+                        return 0;
                     }
                 case Slots.Legs:
                     {
-                        bool equipped = false;
-                        foreach (Item i in equipment)
+                        foreach (Item i in Equipment)
                         {
-                            if (i.slot == Slots.Legs) equipped = true;
+                            if (i.slot == Slots.Legs)
+                            {
+                                Inventory.Add(i);
+                                Equipment.Remove(i);
+                                Equipment.Add(item);
+                                return 0;
+                            }
                         }
-                        if (!equipped)
-                        {
-                            equipment.Add(item);
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        Equipment.Add(item);
+                        return 0;
                     }
                 case Slots.Boots:
                     {
-                        bool equipped = false;
-                        foreach (Item i in equipment)
+                        foreach (Item i in Equipment)
                         {
-                            if (i.slot == Slots.Boots) equipped = true;
+                            if (i.slot == Slots.Boots)
+                            {
+                                Inventory.Add(i);
+                                Equipment.Remove(i);
+                                Equipment.Add(item);
+                                return 0;
+                            }
                         }
-                        if (!equipped)
-                        {
-                            equipment.Add(item);
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        Equipment.Add(item);
+                        return 0;
                     }
                 case Slots.Weapon:
                     {
-                        bool equipped = false;
-                        foreach(Item i in equipment)
+                        foreach (Item i in Equipment)
                         {
-                            if (i.slot == Slots.Weapon) equipped = true;
+                            if (i.slot == Slots.Weapon)
+                            {
+                                Inventory.Add(i);
+                                Equipment.Remove(i);
+                                Equipment.Add(item);
+                                return 0;
+                            }
                         }
-                        if (!equipped)
-                        {
-                            equipment.Add(item);
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                        
+                        Equipment.Add(item);
+                        return 0;
                     }
                 case Slots.Shield:
                     {
-                        bool equipped = false;
-                        foreach(Item i in equipment)
+                        foreach (Item i in Equipment)
                         {
-                            if (i.slot == Slots.Shield) equipped = true;
+                            if (i.slot == Slots.Shield)
+                            {
+                                Inventory.Add(i);
+                                Equipment.Remove(i);
+                                Equipment.Add(item);
+                                return 0;
+                            }
                         }
-                        if (!equipped)
-                        {
-                            equipment.Add(item);
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                        
+                        Equipment.Add(item);
+                        return 0;
                     }
                 case Slots.Item:
                     {
-                        inventory.Add(item);
+                        Inventory.Add(item);
                         return 0;
                         
                     }
                 case Slots.Potion:
                     {
-                        inventory.Add(item);
+                        Inventory.Add(item);
                         return 0;
                         
-                    }
-
-                             
+                    }        
             }
-
             return 1;
         }
+    }
+    class Enemy : Entity
+    {
+
     }
 }

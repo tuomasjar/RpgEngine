@@ -5,15 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RPGEngine;
 
-enum damageDice
-{
-    d4,
-    d6,
-    d8,
-    d10,
-    d12,
-    d20
-}
+
 
 namespace RPGEngine
 {
