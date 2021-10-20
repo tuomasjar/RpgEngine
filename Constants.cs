@@ -58,5 +58,6 @@ namespace RPGEngine
         public const int MAX_INVENTORY = 25;
         public const int SCREEN_WIDTH = 320;
         public const int SCREEN_HEIGHT = 240;
+        public const char EMPTY_SYMBOL = ' ';
     }
 }

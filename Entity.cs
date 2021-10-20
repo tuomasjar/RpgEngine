@@ -12,16 +12,19 @@ namespace RPGEngine
     {
         public int HealthPoints { get; set; }
 
+        public char Symbol { get; set; }
+
         public Position location { get; set; }
 
         public void moveEntity(int x,int y)
         {
             Position temp = location;
+            Graphics.clearLocation(temp);
             temp.X = x;
             temp.Y = y;
             location = temp;
+            Graphics.drawEntity(this);
         }
-
     }
     class Player : Entity
     {
@@ -30,9 +33,15 @@ namespace RPGEngine
 
         public String Description { get; set; }
 
-        private List<Item> Inventory;
+        private List<Item> Inventory = new List<Item>();
 
-        private List<Item> Equipment;
+        private List<Item> Equipment = new List<Item>();
+
+        public Player(String name,Race race)
+        {
+            this.Name = name;
+            this.race = race;
+        }
 
         public int PickUpItem(Item item) //Add item to inventory if inventory is less than 25 items. Returns 0 when successfull
         {
