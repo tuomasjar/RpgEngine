@@ -12,6 +12,16 @@ namespace RPGEngine
     {
         public int HealthPoints { get; set; }
 
+        public Position location { get; set; }
+
+        public void moveEntity(int x,int y)
+        {
+            Position temp = location;
+            temp.X = x;
+            temp.Y = y;
+            location = temp;
+        }
+
     }
     class Player : Entity
     {

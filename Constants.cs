@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 enum Race
 {
     Human,
@@ -34,11 +35,28 @@ enum damageDice
     d12,
     d20
 }
+
+struct Position
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+
+    public int distance(Position target)
+    {
+        double distance = 0.0f;
+        int deltaX = this.X - target.X;
+        int deltaY = this.Y - target.Y;
+        distance = Math.Sqrt((deltaY * deltaY) + (deltaX * deltaX));
+        int result = Convert.ToInt32(distance);
+        return result;
+    }
+}
 namespace RPGEngine
 {
     static class Constants
     {
         public const int MAX_INVENTORY = 25;
-
+        public const int SCREEN_WIDTH = 320;
+        public const int SCREEN_HEIGHT = 240;
     }
 }

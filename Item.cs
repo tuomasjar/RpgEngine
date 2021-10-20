@@ -41,10 +41,10 @@ namespace RPGEngine
         }
         public damageDice dmgDice { get; init; }
 
-        public override void useItem(Enemy target)
+        /*public override void useItem(Enemy target)
         {
 
-        }
+        }*/
         
     }
 
